@@ -157,6 +157,36 @@ const Step2Education: React.FC = () => {
         </FormField>
       )}
 
+      {/* Mentor radio button */}
+      <FormField
+        id="wantsMentor"
+        label="Do you want a mentor?"
+        required
+      >
+        <div className="flex space-x-6">
+          <label className="flex items-center space-x-2">
+            <input
+              type="radio"
+              name="wantsMentor"
+              value="yes"
+              checked={formData.wantsMentor === 'yes'}
+              onChange={handleChange}
+            />
+            <span>Yes</span>
+          </label>
+          <label className="flex items-center space-x-2">
+            <input
+              type="radio"
+              name="wantsMentor"
+              value="no"
+              checked={formData.wantsMentor === 'no'}
+              onChange={handleChange}
+            />
+            <span>No</span>
+          </label>
+        </div>
+      </FormField>
+
       <div className="bg-green-50 p-4 rounded-md mt-6">
         <h4 className="text-green-800 font-medium mb-2">Track Information</h4>
         {formData.preferredTrack === 'bpo' ? (
