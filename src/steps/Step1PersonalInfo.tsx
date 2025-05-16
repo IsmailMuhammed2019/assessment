@@ -46,6 +46,11 @@ const Step1PersonalInfo: React.FC = () => {
     { value: 'prefer-not-to-say', label: 'Prefer not to say' }
   ];
 
+  const verificationModeOptions = [
+    { value: 'bvn', label: 'BVN' },
+    { value: 'nin', label: 'NIN' }
+  ];
+
   return (
     <div className="space-y-4">
       <FormField
@@ -158,6 +163,39 @@ const Step1PersonalInfo: React.FC = () => {
           />
         </FormField>
       </div>
+
+      <FormField
+        id="verificationMode"
+        label="Mode of Verification"
+        required
+      >
+        <Select
+          id="verificationMode"
+          name="verificationMode"
+          value={formData.verificationMode || ''}
+          onChange={handleChange}
+          options={verificationModeOptions}
+          required
+        />
+      </FormField>
+
+      {formData.verificationMode && (
+        <FormField
+          id="verificationValue"
+          label={formData.verificationMode === 'bvn' ? 'Enter your BVN' : 'Enter your NIN'}
+          required
+          hint={`Please enter your ${formData.verificationMode === 'bvn' ? 'BVN' : 'NIN'} for verification`}
+        >
+          <Input
+            id="verificationValue"
+            name="verificationValue"
+            value={formData.verificationValue || ''}
+            onChange={handleChange}
+            placeholder={formData.verificationMode === 'bvn' ? 'Enter your BVN' : 'Enter your NIN'}
+            required
+          />
+        </FormField>
+      )}
     </div>
   );
 };
