@@ -8,20 +8,20 @@ import { nigerianStates } from '../data/states';
 const Step1PersonalInfo: React.FC = () => {
   const { formData, updateFormData } = useOnboarding();
   const [errors, setErrors] = useState<Record<string, string>>({});
-  
+
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
-  
+
   const validatePhone = (phone: string) => {
     const phoneRegex = /^[0-9+\s()-]{10,15}$/;
     return phoneRegex.test(phone);
   };
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    
+
     // Validate and set errors
     if (name === 'email' && value && !validateEmail(value)) {
       setErrors(prev => ({ ...prev, email: 'Please enter a valid email address' }));
@@ -30,22 +30,22 @@ const Step1PersonalInfo: React.FC = () => {
     } else {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
-    
+
     updateFormData({ [name]: value });
   };
-  
+
   const stateOptions = nigerianStates.map(state => ({
     value: state,
     label: state
   }));
-  
+
   const genderOptions = [
     { value: 'male', label: 'Male' },
     { value: 'female', label: 'Female' },
     { value: 'other', label: 'Other' },
     { value: 'prefer-not-to-say', label: 'Prefer not to say' }
   ];
-  
+
   return (
     <div className="space-y-4">
       <FormField
@@ -63,7 +63,7 @@ const Step1PersonalInfo: React.FC = () => {
           required
         />
       </FormField>
-      
+
       <FormField
         id="email"
         label="Email Address"
@@ -80,7 +80,7 @@ const Step1PersonalInfo: React.FC = () => {
           required
         />
       </FormField>
-      
+
       <FormField
         id="phoneNumber"
         label="Phone Number"
@@ -96,7 +96,7 @@ const Step1PersonalInfo: React.FC = () => {
           required
         />
       </FormField>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <FormField
           id="dateOfBirth"
@@ -112,7 +112,7 @@ const Step1PersonalInfo: React.FC = () => {
             required
           />
         </FormField>
-        
+
         <FormField
           id="gender"
           label="Gender"
@@ -126,7 +126,7 @@ const Step1PersonalInfo: React.FC = () => {
           />
         </FormField>
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <FormField
           id="stateOfOrigin"
@@ -142,7 +142,7 @@ const Step1PersonalInfo: React.FC = () => {
             required
           />
         </FormField>
-        
+
         <FormField
           id="currentResidence"
           label="Current Residence"
