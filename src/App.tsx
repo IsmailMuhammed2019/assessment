@@ -28,9 +28,9 @@ function App() {
           <Header />
           <main className="flex-grow py-6">
             {/* Welcoming message */}
-            <div className="max-w-xl mx-auto mb-4 bg-white/80 rounded-lg shadow p-6 text-center">
-              <h1 className="text-2xl font-bold mb-2 text-green-900">Welcome to ICBM Training Onboarding!</h1>
-              <p className="text-gray-700">
+            <div className="max-w-2xl mx-auto mb-4 bg-white/80 rounded-lg shadow p-8 text-center">
+              <h1 className="text-3xl font-bold mb-4 text-green-900">Welcome to ICBM Training Onboarding!</h1>
+              <p className="text-sm text-gray-700">
                 We're excited to have you here. Please fill out the form below to get started with your onboarding process. Please make sure you have a stable internet connection and a quiet environment to complete the onboarding process.
               </p>
             </div>

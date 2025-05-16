@@ -101,20 +101,6 @@ const Step2Education: React.FC = () => {
         />
       </FormField>
 
-      <FormField
-        id="nyscStatus"
-        label="NYSC Status"
-        required
-      >
-        <Select
-          id="nyscStatus"
-          name="nyscStatus"
-          value={formData.nyscStatus}
-          onChange={handleChange}
-          options={nyscStatusOptions}
-        />
-      </FormField>
-
       <div className="bg-green-50 p-4 rounded-md mt-6">
         <h4 className="text-green-800 font-medium mb-2">Track Information</h4>
         {formData.preferredTrack === 'bpo' ? (
