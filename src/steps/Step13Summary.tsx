@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import emailjs from 'emailjs-com';
 import { useOnboarding } from '../context/OnboardingContext';
 import Card, { CardContent } from '../components/ui/Card';
 import Button from '../components/ui/Button';
@@ -10,16 +11,41 @@ const Step13Summary: React.FC = () => {
 
   const score = calculateScore();
   const passing = isPassing();
+  const emailSentRef = useRef(false);
 
-  // Count correct answers
-  const itCorrect = formData.basicITSkills.length;
-  const problemSolvingCorrect = formData.problemSolvingAnswers.length;
-  const cybersecurityCorrect = formData.cybersecurityAnswers?.length || 0;
+  // Replace these with your actual EmailJS IDs
+  const SERVICE_ID = 'service_7555w74';
+  const TEMPLATE_ID = 'template_9ysc16q';
+  const USER_ID = 'template_9ysc16q';
 
-  // Mock email sending
   const sendEmail = () => {
-    console.log('Email would be sent here in production');
-    // In a real app, this would trigger an API call to send an email
+    const templateParams = {
+      to_name: formData.fullName,
+      to_email: formData.email,
+      score: score,
+      track: formData.preferredTrack,
+      result: passing ? 'Congratulations! You passed.' : 'Thank you for your application.',
+    };
+
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, USER_ID)
+      .then((response) => {
+        console.log('Email sent!', response.status, response.text);
+        // Optionally show a toast/notification here
+      }, (err) => {
+        console.error('Failed to send email:', err);
+      });
+  };
+
+  useEffect(() => {
+    if (!emailSentRef.current) {
+      sendEmail();
+      emailSentRef.current = true;
+    }
+    // eslint-disable-next-line
+  }, [passing, formData.email]);
+
+  const handleFinish = () => {
+    window.location.href = 'https://icbm.training';
   };
 
   return (
