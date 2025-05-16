@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import emailjs from 'emailjs-com';
 import { useOnboarding } from '../context/OnboardingContext';
 import Card, { CardContent } from '../components/ui/Card';
 import Button from '../components/ui/Button';
@@ -16,11 +17,39 @@ const Step13Summary: React.FC = () => {
   const problemSolvingCorrect = formData.problemSolvingAnswers.length;
   const cybersecurityCorrect = formData.cybersecurityAnswers?.length || 0;
 
-  // Mock email sending
+  // Prevent multiple emails on re-render
+  const emailSentRef = useRef(false);
+
+  // Replace with your actual EmailJS IDs
+  const SERVICE_ID = 'your_service_id';
+  const TEMPLATE_ID = 'your_template_id';
+  const USER_ID = 'your_public_key';
+
   const sendEmail = () => {
-    console.log('Email would be sent here in production');
-    // In a real app, this would trigger an API call to send an email
+    const templateParams = {
+      to_name: formData.fullName,
+      to_email: formData.email,
+      score: score,
+      track: formData.preferredTrack,
+      result: passing ? 'Congratulations! You passed.' : 'Thank you for your application.',
+    };
+
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, USER_ID)
+      .then((response) => {
+        console.log('Email sent!', response.status, response.text);
+      }, (err) => {
+        console.error('Failed to send email:', err);
+      });
   };
+
+  // Send email when component mounts (user finishes)
+  useEffect(() => {
+    if (!emailSentRef.current) {
+      sendEmail();
+      emailSentRef.current = true;
+    }
+    // eslint-disable-next-line
+  }, [passing, formData.email]);
 
   return (
     <div className="space-y-6">
