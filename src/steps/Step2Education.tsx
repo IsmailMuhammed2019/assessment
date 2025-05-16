@@ -33,6 +33,14 @@ const Step2Education: React.FC = () => {
     { value: 'bpo', label: 'Business Process Outsourcing (BPO)' },
     { value: 'cybersecurity-ai', label: 'Cybersecurity/AI' }
   ];
+
+  const nyscStatusOptions = [
+    { value: 'completed', label: 'Completed' },
+    { value: 'currently-serving', label: 'Currently Serving' },
+    { value: 'exempted', label: 'Exempted' },
+    { value: 'not-required', label: 'Not Required' },
+    { value: 'not-yet-served', label: 'Not Yet Served' }
+  ];
   
   return (
     <div className="space-y-4">
@@ -76,6 +84,20 @@ const Step2Education: React.FC = () => {
           value={formData.preferredTrack}
           onChange={handleChange}
           options={trackOptions}
+        />
+      </FormField>
+
+      <FormField
+        id="nyscStatus"
+        label="NYSC Status"
+        required
+      >
+        <Select
+          id="nyscStatus"
+          name="nyscStatus"
+          value={formData.nyscStatus}
+          onChange={handleChange}
+          options={nyscStatusOptions}
         />
       </FormField>
       

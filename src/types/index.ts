@@ -7,6 +7,7 @@ export type EmploymentStatus = 'employed' | 'unemployed' | 'underemployed';
 export type Availability = 'morning' | 'afternoon' | 'evening' | 'full-time';
 
 export interface FormData {
+  [x: string]: string | number | readonly string[] | undefined;
   // Section 1: Personal & Educational Background
   fullName: string;
   email: string;
@@ -21,7 +22,7 @@ export interface FormData {
   englishReading: number;
   englishWriting: number;
   englishSpeaking: number;
-  
+
   // Section 2: Technical & Digital Literacy Assessment
   basicITSkills: string[];
   typingSpeed: number;
@@ -31,14 +32,14 @@ export interface FormData {
   docsConfidence: number;
   problemSolvingAnswers: string[];
   cybersecurityAnswers?: string[];
-  
+
   // Section 3: Financial & Commitment Profile
   needsLoan: boolean;
   employmentStatus: EmploymentStatus;
   willingToRelocate: 'yes' | 'no' | 'conditional';
   hasLaptop: boolean;
   availability: Availability;
-  
+
   // Section 4: Motivation & Readiness
   motivationEssay: string;
   futureGoals: string;
