@@ -14,7 +14,7 @@ const Progress: React.FC<ProgressProps> = ({
   showPercentage = false
 }) => {
   const percentage = Math.round((value / max) * 100);
-  
+
   return (
     <div className="w-full">
       {(label || showPercentage) && (
@@ -24,8 +24,8 @@ const Progress: React.FC<ProgressProps> = ({
         </div>
       )}
       <div className="w-full bg-gray-200 rounded-full h-2.5">
-        <div 
-          className="bg-blue-600 h-2.5 rounded-full transition-all duration-500 ease-in-out" 
+        <div
+          className="bg-green-600 h-2.5 rounded-full transition-all duration-500 ease-in-out"
           style={{ width: `${percentage}%` }}
           aria-valuenow={value}
           aria-valuemin={0}

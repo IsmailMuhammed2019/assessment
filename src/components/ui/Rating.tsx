@@ -18,7 +18,7 @@ const Rating: React.FC<RatingProps> = ({
   const handleChange = (newValue: number) => {
     onChange(newValue);
   };
-  
+
   return (
     <div className="flex flex-col space-y-2">
       <div className="flex space-x-2">
@@ -28,11 +28,10 @@ const Rating: React.FC<RatingProps> = ({
             <button
               key={ratingValue}
               type="button"
-              className={`h-8 w-8 rounded-full flex items-center justify-center transition-colors ${
-                ratingValue <= value 
-                  ? 'bg-blue-600 text-white' 
+              className={`h-8 w-8 rounded-full flex items-center justify-center transition-colors ${ratingValue <= value
+                  ? 'bg-green-600 text-white'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
+                }`}
               onClick={() => handleChange(ratingValue)}
               aria-label={`Rate ${ratingValue} out of ${max}`}
             >
@@ -44,7 +43,7 @@ const Rating: React.FC<RatingProps> = ({
       {labels && (
         <div className="flex justify-between text-xs text-gray-500 px-1">
           {labels.map((label, index) => (
-            <span 
+            <span
               key={index}
               className={`${index === max - 1 ? 'text-right' : ''} ${index === 0 ? 'text-left' : ''}`}
               style={{ width: `${100 / labels.length}%` }}

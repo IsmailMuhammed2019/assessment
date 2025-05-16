@@ -16,11 +16,11 @@ const Step7ProblemSolving: React.FC = () => {
   );
   const [timeLeft, setTimeLeft] = useState(180); // 3 minutes in seconds
   const [isTimerRunning, setIsTimerRunning] = useState(false);
-  
+
   // Start timer when component mounts
   React.useEffect(() => {
     if (!isTimerRunning) return;
-    
+
     const timer = setInterval(() => {
       setTimeLeft(prev => {
         if (prev <= 1) {
@@ -32,23 +32,23 @@ const Step7ProblemSolving: React.FC = () => {
         return prev - 1;
       });
     }, 1000);
-    
+
     return () => clearInterval(timer);
   }, [isTimerRunning]);
-  
+
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   };
-  
+
   const handleOptionSelect = (questionId: string, selectedOption: string) => {
     setAnswers(prev => ({
       ...prev,
       [questionId]: selectedOption
     }));
   };
-  
+
   const handleSubmit = () => {
     // Calculate correct answers
     const correctAnswers = Object.entries(answers)
@@ -57,24 +57,24 @@ const Step7ProblemSolving: React.FC = () => {
         return question && question.correctAnswer === answer;
       })
       .map(([id]) => id);
-    
+
     updateFormData({ problemSolvingAnswers: correctAnswers });
     setIsTimerRunning(false);
   };
-  
+
   const startTest = () => {
     setIsTimerRunning(true);
   };
-  
+
   return (
     <div className="space-y-6">
-      <div className="bg-blue-50 p-4 rounded-md mb-4">
+      <div className="bg-green-50 p-4 rounded-md mb-4">
         <p className="text-sm text-gray-700">
-          This section tests your problem-solving abilities. You have 3 minutes to complete these questions. 
+          This section tests your problem-solving abilities. You have 3 minutes to complete these questions.
           Think carefully before answering.
         </p>
       </div>
-      
+
       {!isTimerRunning && timeLeft === 180 ? (
         <div className="flex justify-center">
           <Button onClick={startTest}>
@@ -89,7 +89,7 @@ const Step7ProblemSolving: React.FC = () => {
               Time Remaining: {formatTime(timeLeft)}
             </div>
           </div>
-          
+
           {problemSolvingAssessment.map((question, index) => (
             <div key={question.id} className="p-4 border rounded-md bg-white">
               <p className="font-medium">Question {index + 1}: {question.question}</p>
@@ -103,7 +103,7 @@ const Step7ProblemSolving: React.FC = () => {
                       value={option}
                       checked={answers[question.id] === option}
                       onChange={() => handleOptionSelect(question.id, option)}
-                      className="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                      className="h-4 w-4 text-green-600 border-gray-300 focus:ring-green-500"
                       disabled={!isTimerRunning && timeLeft !== 180}
                     />
                     <label
@@ -117,10 +117,10 @@ const Step7ProblemSolving: React.FC = () => {
               </div>
             </div>
           ))}
-          
+
           {(isTimerRunning || timeLeft !== 180) && (
             <div className="mt-4 flex justify-end">
-              <Button 
+              <Button
                 onClick={handleSubmit}
                 disabled={!isTimerRunning && timeLeft !== 180}
               >

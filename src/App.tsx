@@ -7,7 +7,7 @@ import StepContainer from './components/StepContainer';
 function App() {
   return (
     <OnboardingProvider>
-      <div 
+      <div
         className="min-h-screen flex flex-col relative"
         style={{
           backgroundImage: 'url(https://www.icbm.training/tmp/cache/uploads/template_files/BZOwZ6cVX4W9EF2aMVwYFOXgEGzyCv3T02GUkL8y-1600x680.png)',
@@ -18,15 +18,22 @@ function App() {
         }}
       >
         {/* Dark overlay with blur */}
-        <div 
+        <div
           className="absolute inset-0 backdrop-blur-sm bg-black/40"
           style={{ backdropFilter: 'blur(8px)' }}
         />
-        
+
         {/* Content */}
         <div className="relative z-10 flex flex-col min-h-screen">
           <Header />
           <main className="flex-grow py-6">
+            {/* Welcoming message */}
+            <div className="max-w-xl mx-auto mb-4 bg-white/80 rounded-lg shadow p-6 text-center">
+              <h1 className="text-2xl font-bold mb-2 text-green-900">Welcome to ICBM Training Onboarding!</h1>
+              <p className="text-gray-700">
+                We're excited to have you here. Please fill out the form below to get started with your onboarding process. Please make sure you have a stable internet connection and a quiet environment to complete the onboarding process.
+              </p>
+            </div>
             <StepContainer />
           </main>
           <Footer />

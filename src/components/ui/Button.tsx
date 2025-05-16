@@ -22,24 +22,24 @@ const Button: React.FC<ButtonProps> = ({
   fullWidth = false,
 }) => {
   const baseStyles = 'rounded font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2';
-  
+
   const variantStyles = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500',
+    primary: 'bg-green-600 text-white hover:bg-green-700 focus:ring-green-500',
     secondary: 'bg-teal-600 text-white hover:bg-teal-700 focus:ring-teal-500',
-    outline: 'border border-gray-300 bg-transparent text-gray-700 hover:bg-gray-50 focus:ring-blue-500',
-    ghost: 'bg-transparent text-gray-700 hover:bg-gray-100 focus:ring-blue-500',
-    link: 'bg-transparent text-blue-600 hover:underline focus:ring-blue-500 p-0',
+    outline: 'border border-gray-300 bg-transparent text-gray-700 hover:bg-gray-50 focus:ring-green-500',
+    ghost: 'bg-transparent text-gray-700 hover:bg-gray-100 focus:ring-green-500',
+    link: 'bg-transparent text-green-600 hover:underline focus:ring-green-500 p-0',
   };
-  
+
   const sizeStyles = {
     sm: 'py-1.5 px-3 text-sm',
     md: 'py-2 px-4 text-base',
     lg: 'py-3 px-6 text-lg',
   };
-  
+
   const widthStyle = fullWidth ? 'w-full' : '';
   const disabledStyle = disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer';
-  
+
   const buttonStyles = `
     ${baseStyles}
     ${variantStyles[variant]}
@@ -48,7 +48,7 @@ const Button: React.FC<ButtonProps> = ({
     ${disabledStyle}
     ${className}
   `;
-  
+
   return (
     <button
       type={type}

@@ -15,14 +15,14 @@ const Step4BasicITSkills: React.FC = () => {
       return acc;
     }, {} as Record<string, string>)
   );
-  
+
   const handleOptionSelect = (questionId: string, selectedOption: string) => {
     setAnswers(prev => ({
       ...prev,
       [questionId]: selectedOption
     }));
   };
-  
+
   const handleSubmit = () => {
     // Calculate correct answers
     const correctAnswers = Object.entries(answers)
@@ -31,18 +31,18 @@ const Step4BasicITSkills: React.FC = () => {
         return question && question.correctAnswer === answer;
       })
       .map(([id]) => id);
-    
+
     updateFormData({ basicITSkills: correctAnswers });
   };
-  
+
   return (
     <div className="space-y-6">
-      <div className="bg-blue-50 p-4 rounded-md mb-4">
+      <div className="bg-green-50 p-4 rounded-md mb-4">
         <p className="text-sm text-gray-700">
           This section tests your basic IT knowledge. Answer each question by selecting the option you believe is correct.
         </p>
       </div>
-      
+
       {basicITAssessment.map((question, index) => (
         <div key={question.id} className="p-4 border rounded-md bg-white">
           <p className="font-medium">Question {index + 1}: {question.question}</p>
@@ -56,7 +56,7 @@ const Step4BasicITSkills: React.FC = () => {
                   value={option}
                   checked={answers[question.id] === option}
                   onChange={() => handleOptionSelect(question.id, option)}
-                  className="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                  className="h-4 w-4 text-green-600 border-gray-300 focus:ring-green-500"
                 />
                 <label
                   htmlFor={`${question.id}-${option}`}
@@ -69,7 +69,7 @@ const Step4BasicITSkills: React.FC = () => {
           </div>
         </div>
       ))}
-      
+
       <div className="mt-4 flex justify-end">
         <Button onClick={handleSubmit}>
           Save Answers

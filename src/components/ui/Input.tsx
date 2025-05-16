@@ -12,18 +12,18 @@ const Input: React.FC<InputProps> = ({
   ...props
 }) => {
   const baseStyles = 'border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-0 px-3 py-2';
-  const errorStyles = error 
+  const errorStyles = error
     ? 'border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500'
-    : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500';
+    : 'border-gray-300 focus:ring-green-500 focus:border-green-500';
   const widthStyles = fullWidth ? 'w-full' : '';
-  
+
   const inputStyles = `
     ${baseStyles}
     ${errorStyles}
     ${widthStyles}
     ${className}
   `;
-  
+
   return <input className={inputStyles} {...props} />;
 };
 

@@ -14,19 +14,19 @@ const Step8Cybersecurity: React.FC = () => {
       return acc;
     }, {} as Record<string, string>)
   );
-  
+
   // Skip this step if not in cybersecurity track
   if (formData.preferredTrack !== 'cybersecurity-ai') {
     return null;
   }
-  
+
   const handleOptionSelect = (questionId: string, selectedOption: string) => {
     setAnswers(prev => ({
       ...prev,
       [questionId]: selectedOption
     }));
   };
-  
+
   const handleSubmit = () => {
     // Calculate correct answers
     const correctAnswers = Object.entries(answers)
@@ -35,19 +35,19 @@ const Step8Cybersecurity: React.FC = () => {
         return question && question.correctAnswer === answer;
       })
       .map(([id]) => id);
-    
+
     updateFormData({ cybersecurityAnswers: correctAnswers });
   };
-  
+
   return (
     <div className="space-y-6">
-      <div className="bg-blue-50 p-4 rounded-md mb-4">
+      <div className="bg-green-50 p-4 rounded-md mb-4">
         <p className="text-sm text-gray-700">
           Since you've selected the Cybersecurity/AI track, we'd like to assess your current knowledge in this area.
           Please answer the following questions to the best of your ability.
         </p>
       </div>
-      
+
       {cybersecurityAssessment.map((question, index) => (
         <div key={question.id} className="p-4 border rounded-md bg-white">
           <p className="font-medium">Question {index + 1}: {question.question}</p>
@@ -61,7 +61,7 @@ const Step8Cybersecurity: React.FC = () => {
                   value={option}
                   checked={answers[question.id] === option}
                   onChange={() => handleOptionSelect(question.id, option)}
-                  className="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                  className="h-4 w-4 text-green-600 border-gray-300 focus:ring-green-500"
                 />
                 <label
                   htmlFor={`${question.id}-${option}`}
@@ -74,7 +74,7 @@ const Step8Cybersecurity: React.FC = () => {
           </div>
         </div>
       ))}
-      
+
       <div className="mt-4 flex justify-end">
         <Button onClick={handleSubmit}>
           Save Answers

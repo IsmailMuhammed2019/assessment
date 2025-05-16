@@ -6,26 +6,26 @@ import Checkbox from '../components/ui/Checkbox';
 
 const Step12FutureGoals: React.FC = () => {
   const { formData, updateFormData } = useOnboarding();
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     updateFormData({ [name]: value });
   };
-  
+
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target;
     updateFormData({ [name]: checked });
   };
-  
+
   return (
     <div className="space-y-6">
-      <div className="bg-blue-50 p-4 rounded-md mb-4">
+      <div className="bg-green-50 p-4 rounded-md mb-4">
         <p className="text-sm text-gray-700">
-          Please share your future career goals and confirm your commitment to working in the field 
+          Please share your future career goals and confirm your commitment to working in the field
           after completing the program.
         </p>
       </div>
-      
+
       <FormField
         id="futureGoals"
         label="Where Do You See Yourself in 2 Years?"
@@ -40,7 +40,7 @@ const Step12FutureGoals: React.FC = () => {
           placeholder="In two years, I hope to be..."
         />
       </FormField>
-      
+
       <FormField
         id="willingToCommit"
         label="Commitment to Work"
@@ -52,21 +52,21 @@ const Step12FutureGoals: React.FC = () => {
           checked={formData.willingToCommit}
           onChange={handleCheckboxChange}
         />
-        
+
         {!formData.willingToCommit && (
           <div className="mt-2 p-3 bg-yellow-50 border border-yellow-200 rounded-md text-sm text-yellow-800">
             <p>
               <strong>Note:</strong> This program is designed to prepare you for employment in the field.
-              A commitment to work in the industry after completion is generally expected, especially 
+              A commitment to work in the industry after completion is generally expected, especially
               if you receive financial assistance.
             </p>
           </div>
         )}
       </FormField>
-      
+
       <div className="mt-6 border-t pt-4">
         <h4 className="font-medium text-gray-900 mb-2">Career Opportunities</h4>
-        
+
         {formData.preferredTrack === 'bpo' ? (
           <div>
             <p className="text-sm text-gray-700 mb-2">
