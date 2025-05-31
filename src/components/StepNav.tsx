@@ -6,6 +6,7 @@ import { sections } from '../data/sections';
 
 interface StepNavProps {
   showProgress?: boolean;
+  emailSent?: boolean; // Add this line
 }
 
 const StepNav: React.FC<StepNavProps> = ({ showProgress = true }) => {
@@ -53,8 +54,14 @@ const StepNav: React.FC<StepNavProps> = ({ showProgress = true }) => {
         </Button>
         
         <Button
-          onClick={goToNextStep}
-          disabled={isLastStep}
+          onClick={() => {
+            if (isLastStep) {
+              window.location.href = 'https://icbm.training';
+            } else {
+              goToNextStep();
+            }
+          }}
+          disabled={isLastStep ? !emailSent : false}
         >
           {isLastStep ? 'Finish' : 'Next'}
         </Button>
