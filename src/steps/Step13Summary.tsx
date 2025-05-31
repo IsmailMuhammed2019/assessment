@@ -36,8 +36,9 @@ const Step13Summary: React.FC = () => {
     }
 
     const templateParams = {
-      to_name: formData.fullName,
-      email: formData.email,
+      to_name: formData.fullName,         // User's name
+      email: formData.email,              // User's email
+      company_name: 'ICBM Training',      // Company name
       score: score,
       track: formData.preferredTrack,
       result: passing ? 'Congratulations! You passed.' : 'Thank you for your application.',
