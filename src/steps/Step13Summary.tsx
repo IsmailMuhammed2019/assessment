@@ -36,7 +36,7 @@ const Step13Summary: React.FC = () => {
 
     const templateParams = {
       to_name: formData.fullName,
-      to_email: formData.email,
+      email: formData.email, // <-- This must match your template variable
       score: score,
       track: formData.preferredTrack,
       result: passing ? 'Congratulations! You passed.' : 'Thank you for your application.',
