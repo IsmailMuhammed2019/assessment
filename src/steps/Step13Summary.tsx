@@ -26,6 +26,14 @@ const Step13Summary: React.FC = () => {
   const USER_ID = 'kOfy2pDoEyKz_pPEX';
 
   const sendEmail = () => {
+    // Debug: Check email value
+    console.log('Sending email to:', formData.email);
+
+    if (!formData.email) {
+      alert('No email address found. Please provide a valid email.');
+      return;
+    }
+
     const templateParams = {
       to_name: formData.fullName,
       to_email: formData.email,
