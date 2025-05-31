@@ -23,7 +23,7 @@ const Step13Summary: React.FC = () => {
   // Replace with your actual EmailJS IDs
   const SERVICE_ID = 'service_7555w74';
   const TEMPLATE_ID = 'template_9ysc16q';
-  const USER_ID = 'user_kOfy2pDoEyKz_pPEX';
+  const USER_ID = 'kOfy2pDoEyKz_pPEX';
 
   const sendEmail = () => {
     const templateParams = {
