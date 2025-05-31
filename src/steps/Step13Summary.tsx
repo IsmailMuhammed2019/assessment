@@ -27,6 +27,9 @@ const Step13Summary: React.FC = () => {
   const USER_ID = 'kOfy2pDoEyKz_pPEX';
 
   const sendEmail = () => {
+    // Log all form data as JSON
+    console.log('Form Data:', JSON.stringify(formData, null, 2));
+
     // Debug: Check email value
     console.log('Sending email to:', formData.email);
 
@@ -36,9 +39,10 @@ const Step13Summary: React.FC = () => {
     }
 
     const templateParams = {
-      to_name: formData.fullName,         // User's name
-      email: formData.email,              // User's email
-      company_name: 'ICBM Training',      // Company name
+      name: formData.fullName,              // <-- Add this line for user's name
+      to_name: formData.fullName,           // (optional, if you use {{to_name}} elsewhere)
+      email: formData.email,                // User's email
+      company_name: 'ICBM Training',        // Company name
       score: score,
       track: formData.preferredTrack,
       result: passing ? 'Congratulations! You passed.' : 'Thank you for your application.',
