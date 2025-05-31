@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import emailjs from 'emailjs-com';
 import { useOnboarding } from '../context/OnboardingContext';
 import Card, { CardContent } from '../components/ui/Card';
@@ -19,6 +19,7 @@ const Step13Summary: React.FC = () => {
 
   // Prevent multiple emails on re-render
   const emailSentRef = useRef(false);
+  const [emailSent, setEmailSent] = useState(false);
 
   // Replace with your actual EmailJS IDs
   const SERVICE_ID = 'service_7555w74';
@@ -36,7 +37,7 @@ const Step13Summary: React.FC = () => {
 
     const templateParams = {
       to_name: formData.fullName,
-      email: formData.email, // <-- This must match your template variable
+      email: formData.email,
       score: score,
       track: formData.preferredTrack,
       result: passing ? 'Congratulations! You passed.' : 'Thank you for your application.',
@@ -45,8 +46,10 @@ const Step13Summary: React.FC = () => {
     emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, USER_ID)
       .then((response) => {
         console.log('Email sent!', response.status, response.text);
+        setEmailSent(true); // Set email sent status
       }, (err) => {
         console.error('Failed to send email:', err);
+        setEmailSent(false);
       });
   };
 
@@ -58,6 +61,10 @@ const Step13Summary: React.FC = () => {
     }
     // eslint-disable-next-line
   }, [passing, formData.email]);
+
+  const handleFinish = () => {
+    window.location.href = 'https://icbm.training';
+  };
 
   return (
     <div className="space-y-6">
@@ -191,6 +198,15 @@ const Step13Summary: React.FC = () => {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="flex justify-center mt-8">
+        <Button
+          onClick={handleFinish}
+          disabled={!emailSent}
+        >
+          Finish
+        </Button>
       </div>
 
       <div className="text-center text-sm text-gray-500 mt-8">
