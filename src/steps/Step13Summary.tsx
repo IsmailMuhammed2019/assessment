@@ -5,6 +5,7 @@ import Card, { CardContent } from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import { sections } from '../data/sections';
 import { basicITAssessment, problemSolvingAssessment, cybersecurityAssessment } from '../data/assessments';
+import StepNav from '../components/StepNav';
 
 const Step13Summary: React.FC = () => {
   const { formData, calculateScore, isPassing } = useOnboarding();
@@ -220,6 +221,8 @@ const Step13Summary: React.FC = () => {
           If you have any questions, please contact <a href="mailto:support@icbm.learning" className="text-blue-600 hover:underline">support@icbm.learning</a>.
         </p>
       </div>
+
+      <StepNav emailSent={emailSent} />
     </div>
   );
 };
