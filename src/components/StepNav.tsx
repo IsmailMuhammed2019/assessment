@@ -6,10 +6,10 @@ import { sections } from '../data/sections';
 
 interface StepNavProps {
   showProgress?: boolean;
-  emailSent?: boolean; // Add this line
+  emailSent?: boolean;
 }
 
-const StepNav: React.FC<StepNavProps> = ({ showProgress = true }) => {
+const StepNav: React.FC<StepNavProps> = ({ showProgress = true, emailSent }) => {
   const { currentStep, steps, goToPreviousStep, goToNextStep } = useOnboarding();
   
   const currentSection = steps[currentStep - 1]?.section || 1;

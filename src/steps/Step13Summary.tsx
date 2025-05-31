@@ -206,15 +206,6 @@ const Step13Summary: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex justify-center mt-8">
-        <Button
-          onClick={handleFinish}
-          disabled={!emailSent}
-        >
-          Finish
-        </Button>
-      </div>
-
       <div className="text-center text-sm text-gray-500 mt-8">
         <p>
           Thank you for completing the Human Capital Bond program assessment.
@@ -222,7 +213,7 @@ const Step13Summary: React.FC = () => {
         </p>
       </div>
 
-      <StepNav emailSent={emailSent} />
+      <StepNav />
     </div>
   );
 };
