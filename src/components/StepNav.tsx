@@ -7,9 +7,10 @@ import { sections } from '../data/sections';
 interface StepNavProps {
   showProgress?: boolean;
   emailSent?: boolean;
+  passing?: boolean;
 }
 
-const StepNav: React.FC<StepNavProps> = ({ showProgress = true, emailSent }) => {
+const StepNav: React.FC<StepNavProps> = ({ showProgress = true, emailSent, passing }) => {
   const { currentStep, steps, goToPreviousStep, goToNextStep } = useOnboarding();
   
   const currentSection = steps[currentStep - 1]?.section || 1;
@@ -61,7 +62,7 @@ const StepNav: React.FC<StepNavProps> = ({ showProgress = true, emailSent }) => 
               goToNextStep();
             }
           }}
-          disabled={isLastStep ? !emailSent : false}
+          disabled={isLastStep ? (passing ? !emailSent : false) : false}
         >
           {isLastStep ? 'Finish' : 'Next'}
         </Button>

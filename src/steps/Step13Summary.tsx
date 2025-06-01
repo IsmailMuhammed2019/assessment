@@ -60,8 +60,9 @@ const Step13Summary: React.FC = () => {
   };
 
   // Send email when component mounts (user finishes)
+  // Only send email if passing
   useEffect(() => {
-    if (!emailSentRef.current) {
+    if (!emailSentRef.current && passing) {
       sendEmail();
       emailSentRef.current = true;
     }
@@ -213,7 +214,7 @@ const Step13Summary: React.FC = () => {
         </p>
       </div>
 
-      <StepNav />
+      <StepNav emailSent={emailSent} passing={passing} />
     </div>
   );
 };
