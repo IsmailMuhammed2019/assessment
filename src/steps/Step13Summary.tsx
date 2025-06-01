@@ -73,6 +73,11 @@ const Step13Summary: React.FC<Step13SummaryProps> = ({ setEmailSent }) => {
     // eslint-disable-next-line
   }, [passing, formData.email]);
 
+  useEffect(() => {
+    // Log all form data as JSON when the summary is shown
+    console.log('Final Form Data:', JSON.stringify(formData, null, 2));
+  }, []);
+
   const handleFinish = () => {
     window.location.href = 'https://icbm.training';
   };
