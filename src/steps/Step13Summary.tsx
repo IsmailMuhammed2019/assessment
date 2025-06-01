@@ -7,7 +7,11 @@ import { sections } from '../data/sections';
 import { basicITAssessment, problemSolvingAssessment, cybersecurityAssessment } from '../data/assessments';
 import StepNav from '../components/StepNav';
 
-const Step13Summary: React.FC = () => {
+interface Step13SummaryProps {
+  setEmailSent: (sent: boolean) => void;
+}
+
+const Step13Summary: React.FC<Step13SummaryProps> = ({ setEmailSent }) => {
   const { formData, calculateScore, isPassing } = useOnboarding();
 
   const score = calculateScore();
@@ -20,7 +24,7 @@ const Step13Summary: React.FC = () => {
 
   // Prevent multiple emails on re-render
   const emailSentRef = useRef(false);
-  const [emailSent, setEmailSent] = useState(false);
+  const [emailSent, setEmailSentState] = useState(false);
 
   // Replace with your actual EmailJS IDs
   const SERVICE_ID = 'service_7555w74';
@@ -52,10 +56,10 @@ const Step13Summary: React.FC = () => {
     emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, USER_ID)
       .then((response) => {
         console.log('Email sent!', response.status, response.text);
-        setEmailSent(true); // Set email sent status
+        setEmailSentState(true); // Set email sent status
       }, (err) => {
         console.error('Failed to send email:', err);
-        setEmailSent(false);
+        setEmailSentState(false);
       });
   };
 
@@ -213,8 +217,8 @@ const Step13Summary: React.FC = () => {
           If you have any questions, please contact <a href="mailto:support@icbm.learning" className="text-blue-600 hover:underline">support@icbm.learning</a>.
         </p>
       </div>
-
-      <StepNav emailSent={emailSent} passing={passing} />
+{/* 
+      <StepNav emailSent={emailSent} passing={passing} /> */}
     </div>
   );
 };

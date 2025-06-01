@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useOnboarding } from '../context/OnboardingContext';
 import Card, { CardContent, CardFooter } from './ui/Card';
 import StepNav from './StepNav';
+import Step13Summary from '../steps/Step13Summary';
 import { sections } from '../data/sections';
 
 const StepContainer: React.FC = () => {
-  const { currentStep, steps } = useOnboarding();
+  const [emailSent, setEmailSent] = useState(false);
+  const { currentStep, steps, isPassing } = useOnboarding();
+  const passing = isPassing();
 
   // Get current step info
   const step = steps[currentStep - 1];
@@ -14,6 +17,7 @@ const StepContainer: React.FC = () => {
   // Get current section
   const section = sections[step.section - 1];
 
+  // Render steps
   return (
     <div className="max-w-2xl mx-auto px-4 py-6 md:py-10">
       <Card className="bg-white/90 backdrop-blur-md">
@@ -28,10 +32,14 @@ const StepContainer: React.FC = () => {
             </h3>
           </div>
 
-          {StepComponent && <StepComponent />}
+          {currentStep === 13 ? (
+            <Step13Summary setEmailSent={setEmailSent} />
+          ) : (
+            StepComponent && <StepComponent />
+          )}
         </CardContent>
         <CardFooter>
-          <StepNav />
+          <StepNav emailSent={emailSent} passing={passing} />
         </CardFooter>
       </Card>
     </div>
