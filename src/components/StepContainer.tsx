@@ -17,31 +17,34 @@ const StepContainer: React.FC = () => {
   // Get current section
   const section = sections[step.section - 1];
 
-  // Render steps
   return (
     <div className="max-w-2xl mx-auto px-4 py-6 md:py-10">
-      <Card className="bg-white/90 backdrop-blur-md">
-        <div className="p-6 bg-gradient-to-r from-green-600 to-green-800 text-white">
-          <h2 className="text-xl font-semibold">{section.title}</h2>
-          <p className="mt-1 text-green-100">{section.description}</p>
-        </div>
-        <CardContent>
-          <div className="mb-4">
-            <h3 className="text-lg font-medium text-gray-900">
-              {step.title}
-            </h3>
+      {currentStep === 13 ? (
+        <>
+          <Step13Summary setEmailSent={setEmailSent} />
+          <div className="mt-6">
+            <StepNav emailSent={emailSent} passing={passing} />
           </div>
-
-          {currentStep === 13 ? (
-            <Step13Summary setEmailSent={setEmailSent} />
-          ) : (
-            StepComponent && <StepComponent />
-          )}
-        </CardContent>
-        <CardFooter>
-          <StepNav emailSent={emailSent} passing={passing} />
-        </CardFooter>
-      </Card>
+        </>
+      ) : (
+        <Card className="bg-white/90 backdrop-blur-md">
+          <div className="p-6 bg-gradient-to-r from-green-600 to-green-800 text-white">
+            <h2 className="text-xl font-semibold">{section.title}</h2>
+            <p className="mt-1 text-green-100">{section.description}</p>
+          </div>
+          <CardContent>
+            <div className="mb-4">
+              <h3 className="text-lg font-medium text-gray-900">
+                {step.title}
+              </h3>
+            </div>
+            {StepComponent && <StepComponent />}
+          </CardContent>
+          <CardFooter>
+            <StepNav emailSent={emailSent} passing={passing} />
+          </CardFooter>
+        </Card>
+      )}
     </div>
   );
 };

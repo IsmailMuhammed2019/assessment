@@ -53,7 +53,6 @@ const StepNav: React.FC<StepNavProps> = ({ showProgress = true, emailSent, passi
         >
           Previous
         </Button>
-        
         <Button
           onClick={() => {
             if (isLastStep) {

@@ -55,11 +55,11 @@ const Step13Summary: React.FC<Step13SummaryProps> = ({ setEmailSent }) => {
 
     emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, USER_ID)
       .then((response) => {
-        console.log('Email sent!', response.status, response.text);
-        setEmailSentState(true); // Set email sent status
+        setEmailSentState(true);
+        setEmailSent(true); // <-- This updates the parent
       }, (err) => {
-        console.error('Failed to send email:', err);
         setEmailSentState(false);
+        setEmailSent(false); // <-- This updates the parent
       });
   };
 
