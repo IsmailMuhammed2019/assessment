@@ -20,7 +20,7 @@ const StepContainer: React.FC = () => {
   return (
     <div className="max-w-2xl mx-auto px-4 py-6 md:py-10">
       {currentStep === 13 ? (
-        <div className="bg-white/90 backdrop-blur-md">
+        <div className="bg-white/90 backdrop-blur-md p-6 rounded-lg shadow-lg">
           <Step13Summary setEmailSent={setEmailSent} />
           <div className="mt-6">
             <StepNav emailSent={emailSent} passing={passing} />
