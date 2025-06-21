@@ -84,7 +84,7 @@ const Step13Summary: React.FC<Step13SummaryProps> = ({ setEmailSent }) => {
 
   return (
     <div className="space-y-6">
-      <div className={`p-6 rounded-md text-white text-center ${passing ? 'bg-green-600' : 'bg-red-600'}`}>
+      <div className={`p-6 rounded-md text-white text-center ${passing ? 'bg-primary' : 'bg-red-600'}`}>
         <h3 className="text-xl font-bold mb-2">
           {passing ? 'Congratulations!' : 'Thank You for Your Application'}
         </h3>
@@ -102,13 +102,13 @@ const Step13Summary: React.FC<Step13SummaryProps> = ({ setEmailSent }) => {
       </div>
 
       {passing ? (
-        <div className="bg-green-50 p-4 rounded-md border border-green-200">
-          <h4 className="font-medium text-green-800 mb-2">Next Steps</h4>
-          <p className="text-sm text-green-700 mb-3">
+        <div className="bg-primary/10 p-4 rounded-md border border-primary/20">
+          <h4 className="font-medium text-primary mb-2">Next Steps</h4>
+          <p className="text-sm text-primary/90 mb-3">
             An email has been sent to <strong>{formData.email}</strong> with your login credentials
             to the ICBM e-learning platform. Please check your inbox (and spam folder).
           </p>
-          <p className="text-sm text-green-700">
+          <p className="text-sm text-primary/90">
             Your training for the <strong>{formData.preferredTrack === 'bpo' ? 'Business Process Outsourcing' : 'Cybersecurity/AI'}</strong> track
             will begin soon. The email contains all the necessary information about your cohort start date,
             orientation sessions, and what to prepare.

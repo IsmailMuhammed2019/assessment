@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { OnboardingProvider } from './context/OnboardingContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import StepContainer from './components/StepContainer';
 import { useOnboarding } from './context/OnboardingContext'; // Import the hook
+import LandingPage from './components/LandingPage';
 
 function AppContent() {
   const { currentStep } = useOnboarding(); // Get currentStep from context
@@ -47,9 +48,15 @@ function AppContent() {
 }
 
 function App() {
+  const [showAssessment, setShowAssessment] = useState(false);
+
   return (
     <OnboardingProvider>
-      <AppContent />
+      {showAssessment ? (
+        <AppContent />
+      ) : (
+        <LandingPage onStart={() => setShowAssessment(true)} />
+      )}
     </OnboardingProvider>
   );
 }

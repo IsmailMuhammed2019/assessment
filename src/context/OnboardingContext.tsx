@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { FormData, Step } from '../types';
 import { steps } from '../data/steps';
+import { basicITAssessment, problemSolvingAssessment, cybersecurityAssessment } from '../data/assessments';
 
 interface OnboardingContextType {
   currentStep: number;
@@ -109,7 +110,7 @@ export const OnboardingProvider: React.FC<{ children: ReactNode }> = ({ children
     totalPoints += 15;
     
     // IT Skills (15 points)
-    earnedPoints += (formData.basicITSkills.length / 3) * 15;
+    earnedPoints += (formData.basicITSkills.length / basicITAssessment.length) * 15;
     totalPoints += 15;
     
     // Typing Speed (10 points)
@@ -125,12 +126,12 @@ export const OnboardingProvider: React.FC<{ children: ReactNode }> = ({ children
     totalPoints += 20;
     
     // Problem Solving (15 points)
-    earnedPoints += (formData.problemSolvingAnswers.length / 3) * 15;
+    earnedPoints += (formData.problemSolvingAnswers.length / problemSolvingAssessment.length) * 15;
     totalPoints += 15;
     
     // Track Specific (Cybersecurity if applicable) (10 points)
     if (formData.preferredTrack === 'cybersecurity-ai' && formData.cybersecurityAnswers) {
-      earnedPoints += (formData.cybersecurityAnswers.length / 3) * 10;
+      earnedPoints += (formData.cybersecurityAnswers.length / cybersecurityAssessment.length) * 10;
       totalPoints += 10;
     } else if (formData.preferredTrack === 'bpo') {
       // For BPO, typing speed is weighted more heavily

@@ -7,7 +7,7 @@ export type EmploymentStatus = 'employed' | 'unemployed' | 'underemployed';
 export type Availability = 'morning' | 'afternoon' | 'evening' | 'full-time';
 
 export interface FormData {
-  [x: string]: string | number | readonly string[] | undefined;
+  [x: string]: string | number | readonly string[] | boolean | undefined;
   // Section 1: Personal & Educational Background
   fullName: string;
   email: string;

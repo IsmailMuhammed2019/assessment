@@ -28,13 +28,13 @@ const StepContainer: React.FC = () => {
         </div>
       ) : (
         <Card className="bg-white/90 backdrop-blur-md">
-          <div className="p-6 bg-gradient-to-r from-green-600 to-green-800 text-white">
+          <div className="p-6 bg-gradient-to-r from-primary to-primary/80 text-white">
             <h2 className="text-xl font-semibold">{section.title}</h2>
-            <p className="mt-1 text-green-100">{section.description}</p>
+            <p className="mt-1 text-primary-100">{section.description}</p>
           </div>
           <CardContent>
             <div className="mb-4">
-              <h3 className="text-lg font-medium text-gray-900">
+              <h3 className="text-lg font-medium text-primary">
                 {step.title}
               </h3>
             </div>

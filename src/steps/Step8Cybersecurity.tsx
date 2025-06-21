@@ -41,7 +41,7 @@ const Step8Cybersecurity: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="bg-green-50 p-4 rounded-md mb-4">
+      <div className="bg-primary/10 p-4 rounded-md mb-4">
         <p className="text-sm text-gray-700">
           Since you've selected the Cybersecurity/AI track, we'd like to assess your current knowledge in this area.
           Please answer the following questions to the best of your ability.
@@ -61,7 +61,7 @@ const Step8Cybersecurity: React.FC = () => {
                   value={option}
                   checked={answers[question.id] === option}
                   onChange={() => handleOptionSelect(question.id, option)}
-                  className="h-4 w-4 text-green-600 border-gray-300 focus:ring-green-500"
+                  className="h-4 w-4 text-primary border-gray-300 focus:ring-primary"
                 />
                 <label
                   htmlFor={`${question.id}-${option}`}

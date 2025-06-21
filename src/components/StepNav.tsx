@@ -54,6 +54,7 @@ const StepNav: React.FC<StepNavProps> = ({ showProgress = true, emailSent, passi
           Previous
         </Button>
         <Button
+          variant="primary"
           onClick={() => {
             if (isLastStep) {
               window.location.href = 'https://icbm.training';
