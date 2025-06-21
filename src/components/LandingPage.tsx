@@ -202,6 +202,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
     window.open('https://sbtsgroup.com', '_blank');
   };
 
+  const goToPeaceInvest = () => {
+    window.open('https://peaceinvest.net/', '_blank');
+  };
+
   return (
     <div className="font-sans">
       {/* Header */}
@@ -591,8 +595,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">Collaborating with industry leaders to deliver world-class training</p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="bg-white rounded-xl p-8 shadow-lg">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-white rounded-xl p-8 shadow-lg flex flex-col">
               <div className="flex items-center mb-6">
                 <div className="w-16 h-16 bg-[#0186a3] rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-xl">DBI</span>
@@ -603,7 +607,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
                 </div>
               </div>
               
-              <p className="text-gray-600 mb-6">Digital Bridge Institute is Nigeria's leading telecommunications and ICT training institution, dedicated to building digital capacity and driving technological advancement across Africa. With state-of-the-art facilities and industry partnerships, DBI has trained thousands of professionals in emerging technologies.</p>
+              <p className="text-gray-600 mb-6 flex-grow">Digital Bridge Institute is Nigeria's leading telecommunications and ICT training institution, dedicated to building digital capacity and driving technological advancement across Africa. With state-of-the-art facilities and industry partnerships, DBI has trained thousands of professionals in emerging technologies.</p>
               
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="text-center p-4 bg-[#0186a3]/10 rounded-lg">
@@ -616,10 +620,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
                 </div>
               </div>
               
-              <button className="w-full bg-[#0186a3] hover:bg-[#0186a3]/90 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all" onClick={goToDBI}>Learn More About DBI</button>
+              <button className="w-full bg-[#0186a3] hover:bg-[#0186a3]/90 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all mt-auto" onClick={goToDBI}>Learn More About DBI</button>
             </div>
             
-            <div className="bg-white rounded-xl p-8 shadow-lg">
+            <div className="bg-white rounded-xl p-8 shadow-lg flex flex-col">
               <div className="flex items-center mb-6">
                 <div className="w-16 h-16 bg-[#0186a3] rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-xl">SG</span>
@@ -630,7 +634,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
                 </div>
               </div>
               
-              <p className="text-gray-600 mb-6">SBTS Group is a dynamic technology solutions company specializing in business process optimization, digital transformation, and innovative training programs. We bridge the gap between traditional education and modern industry demands through cutting-edge curriculum and practical training approaches.</p>
+              <p className="text-gray-600 mb-6 flex-grow">SBTS Group is a dynamic technology solutions company specializing in business process optimization, digital transformation, and innovative training programs. We bridge the gap between traditional education and modern industry demands through cutting-edge curriculum and practical training approaches.</p>
               
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="text-center p-4 bg-[#0186a3]/10 rounded-lg">
@@ -643,7 +647,34 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
                 </div>
               </div>
               
-              <button className="w-full bg-[#0186a3] hover:bg-[#0186a3]/90 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all" onClick={goToSBTS}>Learn More About SBTS</button>
+              <button className="w-full bg-[#0186a3] hover:bg-[#0186a3]/90 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all mt-auto" onClick={goToSBTS}>Learn More About SBTS</button>
+            </div>
+
+            <div className="bg-white rounded-xl p-8 shadow-lg flex flex-col">
+              <div className="flex items-center mb-6">
+                <div className="w-16 h-16 bg-[#0186a3] rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-xl">PI</span>
+                </div>
+                <div className="ml-4">
+                  <h3 className="text-2xl font-bold text-gray-900">Peace Invest</h3>
+                  <p className="text-gray-600">Global Investment Firm</p>
+                </div>
+              </div>
+              
+              <p className="text-gray-600 mb-6 flex-grow">A global investment firm that harnesses finance to build inclusive and peaceful economies through investments in human capital, digital inclusion, and more.</p>
+              
+              <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="text-center p-4 bg-[#0186a3]/10 rounded-lg">
+                  <div className="text-xl font-bold text-[#0186a3]">Impact</div>
+                  <div className="text-sm text-gray-600">Investing</div>
+                </div>
+                <div className="text-center p-4 bg-[#0186a3]/10 rounded-lg">
+                  <div className="text-xl font-bold text-[#0186a3]">Global</div>
+                  <div className="text-sm text-gray-600">Reach</div>
+                </div>
+              </div>
+              
+              <button className="w-full bg-[#0186a3] hover:bg-[#0186a3]/90 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all mt-auto" onClick={goToPeaceInvest}>Learn More About Peace Invest</button>
             </div>
           </div>
         </div>
