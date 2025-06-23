@@ -27,9 +27,9 @@ const Step13Summary: React.FC<Step13SummaryProps> = ({ setEmailSent }) => {
   const [emailSent, setEmailSentState] = useState(false);
 
   // Replace with your actual EmailJS IDs
-  const SERVICE_ID = 'service_7555w74';
-  const TEMPLATE_ID = 'template_9ysc16q';
-  const USER_ID = 'kOfy2pDoEyKz_pPEX';
+  const SERVICE_ID = 'service_48hkzrg';
+  const TEMPLATE_ID = 'template_en3j8tl';
+  const USER_ID = 'JPXmqdc47zvCAnjrM';
 
   const sendEmail = () => {
     // Log all form data as JSON
@@ -222,7 +222,7 @@ const Step13Summary: React.FC<Step13SummaryProps> = ({ setEmailSent }) => {
           If you have any questions, please contact <a href="mailto:support@icbm.learning" className="text-blue-600 hover:underline">support@icbm.learning</a>.
         </p>
       </div>
-{/* 
+      {/* 
       <StepNav emailSent={emailSent} passing={passing} /> */}
     </div>
   );
